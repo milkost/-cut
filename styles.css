@@ -116,9 +116,11 @@ h2 { margin: 7px 0 0; font: 700 22px Manrope, sans-serif; letter-spacing: -.7px;
 .form-error { color: #a34635; background: #fff3ef; border: 1px solid #f1d5cc; border-radius: 6px; padding: 10px; margin: 14px 0 0; font-size: 11px; }
 
 .result-heading { margin-bottom: 22px; }
+.export-actions { display: flex; gap: 7px; }
 .export-button { min-height: 31px; padding: 0 10px; border: 1px solid #e6ebe5; border-radius: 6px; background: white; color: #52645a; font-size: 10px; font-weight: 600; }
 .export-button span { font-size: 14px; margin-right: 4px; }
 .export-button:disabled { opacity: .45; cursor: not-allowed; }
+.print-date { display: none; }
 .empty-state { min-height: 405px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 10px 20px 30px; }
 .empty-illustration { position: relative; width: 169px; height: 118px; margin-bottom: 24px; display: grid; place-items: center; }
 .empty-bar { display: flex; align-items: center; gap: 7px; width: 148px; height: 31px; padding: 0 8px; border-radius: 5px; background: #edf2e8; box-shadow: 0 9px 17px rgba(48, 76, 51, .08); transform: rotate(-10deg); }
@@ -216,4 +218,24 @@ h2 { margin: 7px 0 0; font: 700 22px Manrope, sans-serif; letter-spacing: -.7px;
   .privacy-note { max-width: 145px; line-height: 1.5; }
   .calculate-button { gap: 8px; padding: 0 10px; }
   .page-footer { font-size: 8px; }
+  .export-actions { flex-direction: column; gap: 5px; align-items: stretch; }
+}
+
+@page { size: auto; margin: 14mm; }
+@media print {
+  body { min-width: 0; background: #fff; color: #1d3029; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .app-shell { max-width: none; padding: 0; }
+  .topbar, .intro, .input-panel, .page-footer, .export-actions, .algorithm-note { display: none !important; }
+  main { padding: 0; }
+  .workspace { display: block; }
+  .results-panel { min-height: 0; padding: 0; border: 0; border-radius: 0; box-shadow: none; }
+  .result-heading { margin-bottom: 18px; }
+  .result-heading h2 { font-size: 25px; }
+  .print-date { display: block; margin: 5px 0 0; color: #78857d; font-size: 10px; }
+  .result-summary { break-inside: avoid; }
+  .metric-card { border: 1px solid #e7eae3; }
+  .bar-plan { break-inside: avoid; padding: 12px 0; }
+  .cut-bar { height: 30px; }
+  .bar-piece-label { break-inside: avoid; }
+  .result-warning { break-inside: avoid; }
 }

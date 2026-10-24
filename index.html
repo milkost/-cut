@@ -103,8 +103,12 @@
               <div>
                 <p class="section-index">02 <span>/ РЕЗУЛТАТ</span></p>
                 <h2>План за рязане</h2>
+                <p id="print-date" class="print-date"></p>
               </div>
-              <button class="export-button" id="export-button" type="button" disabled><span aria-hidden="true">↓</span> Експортирай</button>
+              <div class="export-actions">
+                <button class="export-button" id="export-pdf" type="button" disabled><span aria-hidden="true">▤</span> Експортирай PDF</button>
+                <button class="export-button" id="export-button" type="button" disabled><span aria-hidden="true">↓</span> Експортирай CSV</button>
+              </div>
             </div>
             <div id="empty-state" class="empty-state">
               <div class="empty-illustration" aria-hidden="true">

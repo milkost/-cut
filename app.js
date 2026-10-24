@@ -225,6 +225,7 @@ function renderResults(plan) {
   $("#empty-state").hidden = true;
   $("#results").hidden = false;
   $("#export-button").disabled = false;
+  $("#export-pdf").disabled = false;
   const cutCount = plan.bars.reduce((sum, bar) => sum + bar.pieces.length, 0);
   const barCount = plan.bars.length;
   const metrics = `
@@ -329,6 +330,12 @@ function exportPlan() {
   URL.revokeObjectURL(url);
 }
 
+function exportPdf() {
+  if (!lastPlan) return;
+  $("#print-date").textContent = `Генериран на ${new Date().toLocaleString("bg-BG", { dateStyle: "long", timeStyle: "short" })}`;
+  window.print();
+}
+
 function importParts() {
   const input = $("#import-text").value.trim();
   const errorElement = $("#import-error");
@@ -409,6 +416,7 @@ $("#add-part").addEventListener("click", () => {
 $("#calculate").addEventListener("click", optimize);
 $("#reset-button").addEventListener("click", resetExample);
 $("#export-button").addEventListener("click", exportPlan);
+$("#export-pdf").addEventListener("click", exportPdf);
 $("#unit").addEventListener("change", () => {
   $$(".unit-label").forEach(label => { label.textContent = $("#unit").value; });
   if (lastPlan) {
@@ -437,5 +445,6 @@ $("#clear-history").addEventListener("click", () => {
   }
 });
 $("#export-button").disabled = true;
+$("#export-pdf").disabled = true;
 renderRows();
 renderHistory();
